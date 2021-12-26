@@ -12,20 +12,22 @@ def batch(list1, list2, batch_size=1):
         yield list1[ndx:min(ndx + batch_size, l)], list2[ndx:min(ndx + batch_size, l)]
 
 
+device = torch.device("cuda:5" if torch.cuda.is_available() else "cpu")
+
 with open('./data/raw_title.pkl', 'rb') as f:
     title_list = pickle.load(f)
 with open('./data/raw_abst.pkl', 'rb') as f:
     abst_list = pickle.load(f)
 
 tokenizer = AutoTokenizer.from_pretrained("allenai/specter")
-model = AutoModel.from_pretrained("allenai/specter")
+model = AutoModel.from_pretrained("allenai/specter").to(device)
 
 start_time = time.time()
-for i, (title, abst) in enumerate(batch(title_list, abst_list, batch_size=5)):
-    _input = tokenizer(title, max_length=512, padding=True, truncation=True, return_tensors='pt')
+for i, (title, abst) in enumerate(batch(title_list, abst_list, batch_size=1)):
+    _input = tokenizer(title, max_length=512, padding=True, truncation=True, return_tensors='pt').to(device)
     output1 = model(**_input).pooler_output
 
-    _input = tokenizer(abst, max_length=512, padding=True, truncation=True, return_tensors='pt')
+    _input = tokenizer(abst, max_length=512, padding=True, truncation=True, return_tensors='pt').to(device)
     output2 = model(**_input).pooler_output
     
     if i == 0:
