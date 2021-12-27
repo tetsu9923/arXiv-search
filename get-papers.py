@@ -13,7 +13,7 @@ import requests
 def main(args):
     base_url = 'http://export.arxiv.org/api/query?'
 
-    query = args.query
+    search_query = args.query
     start_idx = args.start_idx
     max_results = args.max_results
     day_minus = -1*args.day_minus
@@ -21,6 +21,9 @@ def main(args):
     append = args.append
 
     target_day = (datetime.date.today() + datetime.timedelta(days=day_minus))
+
+    if not os.path.exists('data'):
+        os.mkdir('data')
         
     if append:
         with open('./data/raw_title.pkl', 'rb') as f:
@@ -100,7 +103,7 @@ if __name__ == '__main__':
     parser.add_argument('--max-results', type=int, default=10000)
     parser.add_argument('--day-minus', type=int, default=10000)
     parser.add_argument('--n-requests', type=int, default=10000)
-    parser.add_argument('--append', type=bool, default=False)
+    parser.add_argument('--append', action='store_true')
 
     args = parser.parse_args()
     main(args)
