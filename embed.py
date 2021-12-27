@@ -1,6 +1,5 @@
 import argparse
 import pickle
-import time
 
 import torch
 import numpy as np
@@ -26,7 +25,6 @@ def main(args):
     tokenizer = AutoTokenizer.from_pretrained('allenai/specter')
     model = AutoModel.from_pretrained('allenai/specter').to(device)
 
-    start_time = time.time()
     for i, (title, abst) in enumerate(batch(title_list, abst_list, batch_size=batch_size)):
         with torch.no_grad():
             _input = tokenizer(title, max_length=512, padding=True, truncation=True, return_tensors='pt').to(device)
@@ -59,7 +57,6 @@ def main(args):
             torch.cuda.empty_cache()
         print(batch_size*(i+1))
 
-    print('Execution time: {}'.format(time.time() - start_time))
     np.save('./data/title_embeddings.npy', title_embeddings.cpu().detach().numpy())
     np.save('./data/abst_embeddings.npy', abst_embeddings.cpu().detach().numpy())
 

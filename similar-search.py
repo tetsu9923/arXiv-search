@@ -49,7 +49,6 @@ def main(args):
         raise ValueError
 
     sim_list = []
-    start_time = time.time()
     for vector in embeddings:
         sim_list.append(cos_similarity(query, vector))
         
@@ -60,8 +59,6 @@ def main(args):
         print('Title: {}'.format(title_list[sim_idx[i]]))
         print('Link: {}'.format(link_list[sim_idx[i]]))
         print('Abstract: \n{}'.format(abst_list[sim_idx[i]]))
-
-    print(time.time() - start_time)
 
     with open('./data/results.txt', mode='w') as f:
         for i in range(top_n):
