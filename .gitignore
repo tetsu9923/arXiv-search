@@ -1,2 +1,4 @@
-/data/
-/trash/
+data/
+trash/
+tmp.py
+.python-version
