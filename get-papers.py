@@ -69,7 +69,16 @@ def main(args):
                 break
             title_list.append(entry.title)
             abst_list.append(entry.summary.replace('\n', ' '))
-            link_list.append(entry.links[0]['href'])
+
+            link_exists = False
+            for link in entry.links:
+                if link.rel == 'alternate':
+                    link_list.append(link['href'])
+                    link_exists = True
+                    break
+            if not link_exists:
+                link_list.append(entry.links[0]['href'])
+            
             n_papers += 1
             if total_results <= n_papers+start_idx:
                 break_flag = True
