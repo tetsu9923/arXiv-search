@@ -15,10 +15,10 @@ Ubuntu Server 16.04, Python3.8で動作確認済み
 ## 手順
 以下の手順で論文検索を行います。
 1. arXiv APIを利用した論文のダウンロード
-2. SPECTERによる論文埋め込みベクトルの生成
+2. SPECTERによる論文埋め込みベクトルの生成（GPU使用推奨）
 3. クエリ論文を与えて類似論文検索
 
-ここで、2021年までに公開された機械学習系（カテゴリ: cs:AI, cs:LG, stat:ML, cs.CV, cs.CL）の論文データについてはこちらで公開しているため、arXiv-search-local/data/ディレクトリを作り、これらのデータをdata/に格納すれば、3.の手順のみで類似論文を検索できます。
+ここで、2021年までに公開された機械学習系（カテゴリ: cs:AI, cs:LG, stat:ML, cs.CV, cs.CL）の論文データについては[こちら](https://drive.google.com/drive/folders/18TD8I6T8sTLtjngR1mIc7PVafb3sOkmA?usp=sharing)で公開しているため、arXiv-search-local/data/ディレクトリを作り、data.tar.gzを解凍した中身のデータを格納すれば、3.の手順のみで類似論文を検索できます。
 
 ## 論文のダウンロード
 まず、arXivのAPIを利用して論文データをダウンロードします。以下のコマンドはカテゴリcs.AIもしくはcs.CVに属する論文のうち、過去10日間にpublishされた論文をダウンロードする例です。
