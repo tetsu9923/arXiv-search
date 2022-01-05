@@ -21,7 +21,7 @@ python get-papers.py --query cat:cs.AI+OR+cat:cs.CV --day-minus 10
 | --query | arXiv APIのクエリ（詳細は[こちら](https://arxiv.org/help/api/user-manual#query_details)を参照してください） | cat:cs.LG |
 | --day-minus | 何日前までの論文をダウンロードするかを示す。全期間の論文をダウンロードするには10000と指定してください。 | 10000 |
 | --append | 今回ダウンロードした論文データを前回までにダウンロードしたデータに付加するかどうかを示す。--appendを付けなければ上書きされます。 | (False) |
-| --max-results | 1回のリクエストでダウンロードする論文数の最大値。10000以下の値に設定してください。値が大きいとリクエストに繰り返し失敗することがあるので適宜調整してください。詳しくは[Query Interface](https://arxiv.org/help/api/user-manual#_query_interface)を参照してください。 | 1000 |
+| --max-results | 1回のリクエストでダウンロードする論文数の最大値。10000以下の値に設定してください。値が大きいとリクエストに繰り返し失敗することがあるので適宜調整してください。詳しくは[Query Interface](https://arxiv.org/help/api/user-manual#_query_interface)を参照してください。 | 10000 |
 | --start-idx | 何番目の論文からダウンロードするかを表すindex。詳しくは[Query Interface](https://arxiv.org/help/api/user-manual#_query_interface)を参照してください。 | 0 |
 
 
