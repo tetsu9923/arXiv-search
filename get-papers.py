@@ -88,12 +88,6 @@ def main(args):
         if break_flag:
             break
         time.sleep(10)
-        with open('./data/raw_title.pkl', 'wb') as f:
-            pickle.dump(title_list, f)
-        with open('./data/raw_abst.pkl', 'wb') as f:
-            pickle.dump(abst_list, f)
-        with open('./data/raw_link.pkl', 'wb') as f:
-            pickle.dump(link_list, f)
     
     print('Total number of papers: {}'.format(len(title_list)))
 
@@ -109,7 +103,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--query', type=str, default='cat:cs.LG')
     parser.add_argument('--start-idx', type=int, default=0)
-    parser.add_argument('--max-results', type=int, default=1000)
+    parser.add_argument('--max-results', type=int, default=10000)
     parser.add_argument('--day-minus', type=int, default=10000)
     parser.add_argument('--n-requests', type=int, default=10000)
     parser.add_argument('--append', action='store_true')
