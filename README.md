@@ -1,6 +1,9 @@
 # arXiv-search-local
 タイトルとアブストラクトの情報から類似するarXivの論文を検索するツールです。TransformerのPretrainedモデルである[SPECTER](https://arxiv.org/abs/2004.07180) [Cohan+, ACL 2020]により論文のタイトルとアブストラクトの埋め込みベクトルを計算し、その類似度を利用して類似論文を検索します。SPECTERは引用関係にある論文の出力ベクトル同士が類似するように学習を行っているため、推論時には引用関係にあると推定される論文間の距離が近くなるようにベクトルを出力します。
 
+**本ツールは下記URLでwebアプリケーションとして公開しています。**  
+https://share.streamlit.io/tetsu9923/arxiv-search-streamlit/main.py
+
 
 ## requirements
 - torch
