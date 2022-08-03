@@ -53,11 +53,11 @@ python embed.py --device cuda:0 --batch-size 32
 ## 類似論文検索
 最後に、クエリとなるタイトルもしくはアブストラクト（もしくはその両方）を指定して類似論文検索を行います。結果は標準出力と`./data/results.txt`に出力されます。
 ```
-python similar-search.py --top-n 10 --title "title of your paper" --abstract "abstract of your paper"
+python similar-search.py --top-n 10 --title "title of your paper" --abst "abstract of your paper"
 ```
 各argsの詳細は以下の通りです（全てoptional）。
 |  --option  | 説明 | Default |
 |-|-|-|
 | --top-n | 類似度の上位何件の結果を表示するかを示す。 | 10 |
 | --title | 検索したいタイトル | None |
-| --batch-size | 検索したいアブストラクト | None |
+| --abst | 検索したいアブストラクト | None |
